@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Mascota</title>
+</head>
+<body>
+    <h1>Formulario de Mascota</h1>
+    <form th:action="@{/insertarMascota}" th:object="${mascota}">
+        <h3>Nombre de la mascota:</h3>
+        <input type="text" th:field="*{nombre}">
+        <h3>Selecciona la region de la mascota:</h3>
+        <select name="idRegion"> <!--Cargo una lista con todas las regiones y muestro su nombre, pero al guardarlas usao el id en el value-->
+            <option th:each="region : ${listaRegiones}" th:value="${region.id}" th:text="${region.nombre}"></option>
+        </select>
+        <h3>Selecciona el duelo de esta mascota:</h3>
+        <select name="idHumano">
+            <option th:each="humano : ${listaHumanos}" th:value="${humano.id}" th:text="${humano.nombre}"></option>
+        </select>
+        <input type="submit" value="Crear Mascota">
+    </form>
+</body>
+</html>

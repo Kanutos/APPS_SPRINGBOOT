@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Listado de mascotas de cada dueño</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de mascotas cuyo dueño quiere adoptar:</h1>
+    <table>
+        <tr>
+            <th>ID dueño</th>
+            <th>Nombre Dueño</th>
+            <th>ID Pokemon</th>
+            <th>Nombre mascota</th>
+            <th>Eliminar mascota</th>
+        </tr>
+        <tr th:each="mascota : ${listarMascotaHumanosActivos}"> <!-- El th:each es para recorrer la lista de mascotas que se recibe del controlador-->
+            <td th:text="${mascota.humanoMascota.id}"></td>
+            <td th:text="${mascota.humanoMascota.nombre}"></td>
+            <td th:text="${mascota.id}"></td>
+            <td th:text="${mascota.nombre}"></td>
+            <td><a th:href="@{'/borrarMascotaListadoHumanosActivos/' + ${mascota.id} + '/' + ${mascota.humanoMascota.id}}"><input type="button" value="Eliminar"></a></td>
+        </tr>
+    </table>
+</body>
+</html>

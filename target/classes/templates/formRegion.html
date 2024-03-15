@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Regiones</title>
+</head>
+<body>
+    <h1>Formulario de Regiones</h1>
+    <form th:action="@{/insertarRegion}" th:object="${region}">
+        <h3>Nombre de la Region que vas a crear:</h3>
+        <input type="text" th:field="*{nombre}">
+        <input type="submit" value="Crear Region">
+    </form>
+</body>
+</html>

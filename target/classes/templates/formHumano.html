@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Dueño</title>
+</head>
+<body>
+    <h1>Formulario de Dueño</h1>
+    
+    <form th:action="@{/insertarHumano}" th:object="${humano}">
+        <h3>Nombre del Dueño:</h3>
+        <input type="text" th:field="*{nombre}">
+        
+        <h3>Marcar si quiere adoptar Mascota:</h3>
+        <input type="checkbox" th:field="*{activo}">
+        <input type="submit" value="Crear Humano">
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Listado de mascotas por dueño</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de mascotas cuyo dueño quiera adoptar:</h1>
+    <table>
+        <tr>
+            <th>ID Dueño</th>
+            <th>Nombre Dueño</th>
+            <th>Estado del Dueño (Activo = true, Inactivo = false)</th>
+            <th>Cambiar Estado</th>
+        </tr>
+        <tr th:each="humano : ${listadoHumanos}"> <!-- El th:each es para recorrer la lista de mascotas que se recibe del controlador-->
+            <td th:text="${humano.id}"></td>
+            <td th:text="${humano.nombre}"></td>
+            <td th:text="${humano.activo}"></td>
+            <td><a th:href="@{'/cambiarEstadoHumano/' + ${humano.id}}"><input type="button" value="Cambiar Estado"></a></td>
+        </tr>
+    </table>
+</body>
+</html>
